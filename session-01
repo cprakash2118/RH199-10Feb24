@@ -1,0 +1,260 @@
+
+# Login to the LAB, with your Red Hat Login ID (RHN ID).
+  https://rol.redhat.com
+
+Options:-
+- Labs: Create/Start/stop/delete (Click on that as per you).
+- Resources: 
+    - Access Bookshelf.
+    - Download Ebook PDF.
+
+# Product - Red Hat Enterprise Linux (RHEL 9)
+  https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux
+  https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9
+
+# Training Module & Exam Code:-
+  RH199 & EX200 (EX200V9).
+
+# Orientation to the Classroom Environment:-
+1) Users Details: When Login to any Virtual Machine (VMs).
+   student/student 
+   root/redhat 
+   
+   FYI- student is a sudo user with password
+     sudo anycommand
+	 Password for Student: GIve student password
+	 
+	 This way it will execute the command as root.
+	 
+2) Network/Domain: 
+    Network Name             Domian Name         IP Range
+	classroom network        example.com         172.25.252.0/24 
+	student network          lab.example.com     172.25.250.0/24 
+	
+
+3) Servers/VMs:-
+    - workstation.lab.example.com   - Jump Server (RHELv9 - GUI).
+	
+	- servera.lab.example.com       - node1 or 1st server, where we will perform all our tasks.
+	- serverb.lab.example.com       - node2 or 2nd server, where we will perform all our tasks.
+	
+	- bastion.lab.example.com       - This act as router (WHich connect Student network to classroom network).
+	FYI - Router (Network Device) allow to connect two/more different networks (N1/N2)
+	
+	- classroom.example.com 
+	or
+	- content.example.com 
+	- materials.example.com 
+	
+	
+	"Ctrl Key" + "Shift Key" + "+ key" - To increase fount size.
+	"Ctrl key" + "- key"   - To reduce the fount size 
+	
+	
+	Logon to workstation as student and ssh to servea/serverb and hot below commands.
+	
+	hostname -s 
+	hostname -d 
+	hostname -f 
+	uptime 
+	uname -a 
+	uname -n (This gives kernel detail).
+	
+############ 
+What is Operating System?
+- S/w which manage the system's hardware.
+
+Why using OS ?  Optimum/Max utilization of resources.
+
+Client & Server (Linux Based).
+
+#
+
+
+11:30-11:50 - Tea Break
+
+1:30pm - 2:15 (10 +/- mins)
+
+3:30pm to 3:50pm IST 
+
+###############################
+Absolute Path - alway start with "/"
+Relative path - never start with "/" 
+
+The File-system Hierarchy:- 
+/ - root file system (Main folder, which carry all Linux files/dir etc).
+
+/bin or /usr/bin - 
+
+###############
+unixadm 
+dbadm
+middleware 
+apps_grp
+
+user1-5 , passwd=redhat , unixadm 
+
+
+groupadd 
+useradd 
+usermod 
+groupmod 
+passwd 
+
+/etc/passwd  (man 5 passwd)
+/etc/group   (man 5 group)
+/etc/shadow  (man 5 shadow)
+ls -ld /home/username 
+ls -ld /home/username/.bash* 
+
+ls -l /var/spool/mail/username 
+
+#####
+Manual page (help)
+1 - (man mkdir or man 1 mkdir ) - all commands belongs to /bin or /usr/bin 
+8 - man useradd or man 8 useradd  - all commands belongs to /sbin or /usr/sbin 
+5 - man 5 filename Eg: 
+/etc/passwd  (man 5 passwd)
+/etc/group   (man 5 group)
+/etc/shadow  (man 5 shadow)
+
+useradd --help 
+chage --help 
+
+###########
+#Group (team)  primary 
+unixadm      (user1-user3) 
+dbadm        (user4-user6)
+wintel       (user7-user9)
+middleware   (user10-user12)
+
+
+Users having primary or suplymentry group 
+
+user1 having primary group "unixadm" and 2ndry group "dbadm" 
+
+Primary group (/etc/passwd) - 4th field -Primary group
+2ndry Group  (/etc/group )
+
+#####
+
+groupadd unixadm 
+
+useradd -g unixdmin user1 
+passwd user1 
+echo redhat | passwd --stdin user1 
+##################################################
+#Concept of the command:-
+
+#COMMAND OPTION ARGEMENT
+
+# COMMAND - /bin (/usr/bin) or /sbin (/usr/sbin)
+Each command having manual page.
+man useradd
+
+# OPTION - Which modify the behavious of the command
+FYI- Multiple option can be used.
+Eg: -v, -v -i or -vi , --help 
+
+useradd --help  
+
+# ARGEMENT - Data which required to execute the command.
+
+######################
+Lab-01:-
+Concept-01: Create file using touch and editor.
+# touch file 
+Example: 
+1.
+ # touch file1.txt 
+ # ls 
+ # file * 
+ # touch file2.txt file3.txt 
+ # file * 
+ # cat file2.txt 
+
+2.
+# vim file2.txt 
+press "i" key - insert mode 
+Type your contents
+Type 2nd line 
+
+pass "esc" key - lock mode (enable lock mode)
+:wq!
+
+3. vim file2.txt 
+Type your contents
+Type 2nd line 
+
+For copy - 
+Press "esc" key - to enable lock mode  
+Move to the line from where you want to copy and press "y" key - copy/yank
+Then how many lines you want to copy, press number and then up or down arrow.
+Once copied then "esc" mode, go that that line  where youb want to paste and press "p" key.
+
+# gedit file 
+
+###########
+mkdir dir 
+cd dir 
+cd ../.. (Two step back)
+cd ../../.. (THree step back)
+
+touch 
+pwd
+
+############
+mkdir -p /ORG/{CSE,IT,ME,ECE}/{1st_year,2nd_year,3rd_year,4th_year}/
+touch file{1..5}.txt 
+#########################################################################
+LAB-02:-
+# whoami 
+# hostname -s
+# hostname -d
+# hostname -f
+
+# pwd
+--
+# mkdir -p /PROJECT/{UNIX,DB,WINTEL,NETWORK,STORAGE}/
+or
+# mkdir /PROJECT
+# cd /PROJECT
+# mkdir UNIX DB WINTEL NETWORK STORAGE
+----
+
+# pwd
+/PROJECT
+# mkdir data
+# pwd
+/PROJECT/data 
+# touch file{1..4}.txt 
+
+FYI - file1.txt 
+This is my file1.txt 
+
+- file2.txt 
+This is my file2.txt 
+
+
+# copy file1.txt to CSE/ME/ECE 2nd_year 
+
+# Groups - unix_grp , dba_grp, wintel_grp, network_grp & storage_grp 
+groupadd unix_grp
+groupadd dba_grp
+
+cat /etc/group | grep group_name 
+
+
+# Users - 
+   user101 - p_grp=unix_grp, 2nd_grp=dba_grp 
+   user102 - p_grp=dba_grp 
+   user103 - p_grp=wintel_grp, 2nd_grp=network_grp
+   user104 - p_grp=storage_grp, 2nd_grp=network_grp
+
+  password for all - redhat   
+ 
+ Example: 
+   useradd -g unix_grp  -G dba_grp  user101 
+   passwd user101
+
+
